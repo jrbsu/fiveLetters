@@ -8,6 +8,7 @@ var wordList = [],
     guess = 0,
     hits = 0,
     mostHits = 1,
+    score = 500,
     randomWord = "",
     wrong = false,
     correct = false,
@@ -29,18 +30,19 @@ function timerSetup() {
         .css('background-color','#22cc22')
         .stop();
     if (timerInterval !== undefined) {
-        timerInterval = setInterval(countdown, 1000);
+        timerInterval = setInterval(countdown, 100);
     }
 }
 
 function countdown() {
     if (hardStop === false) { //setInterval is being a pain
         $('.timer')
-            .animate({'width':'-=10vw'},{duration: 500})
-            .animate({'background-color':'#ff0000'},{duration: 4000, queue: false});
+            .animate({'width':'-=1vw'},{duration: 50})
+            .animate({'background-color':'#ff0000'},{duration: 3000, queue: false});
         seconds += 1;
+        score -= 1;
         console.log(seconds);
-        if (seconds > 10) {
+        if (seconds > 100) {
             giveUp();
             stopTimer();
         }
@@ -124,7 +126,7 @@ function userSubmit() {
                     $("tr.word-line:nth-child(" + i + ")").animate({'opacity':'20%'},600);
                 }
             }
-            $('#warning-box').html("<strong>CONGRATULATION!</strong><br /><br />The word was <span class='submission'>" + randomWord + "</span>!<br /><br />(<a href='https://en.wiktionary.org/wiki/" + randomWord + "' target='_blank'>WTF does that mean?</a>)");
+            $('#warning-box').html("<strong>CONGRATULATION!</strong><br /><br /><strong>" + score + " POINTS!</strong><br /><br />The word was <span class='submission'>" + randomWord + "</span>!<br /><br />(<a href='https://en.wiktionary.org/wiki/" + randomWord + "' target='_blank'>WTF does that mean?</a>)");
             $("#main-area").animate({'background-color':'#157A15'},600);
             $('#warning-box').show();
             $('#restart').show();
@@ -211,7 +213,6 @@ function userSubmit() {
                 unguessedLetters.splice(index, 1);
             }
         }
-        console.log(unguessedLetters,chars);
         
         for (var i=0;i<5;i++) {
             
@@ -225,7 +226,6 @@ function userSubmit() {
                         unguessedLetters.splice(index, 1);
                     }
                     
-                    console.log("matches: " + letterMatchesThisCycle + ". current letter: " + submissionChars[i] + ". toColour: " + toColour);
                 }
                 
             }
@@ -236,16 +236,15 @@ function userSubmit() {
             
             if (toColour.includes(j)) {
                 $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")").addClass("yellow");
-                console.log("colored " + j);
             }
         }
         
+    stopTimer();
     }
     
     // other stuff
     $('#answer').val('');
     $('#answer').focus();
-    stopTimer();
 }
 
 function giveUp() {
