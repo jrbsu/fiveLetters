@@ -1,0 +1,72 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIVE LETTERS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js" integrity="sha512-VjRpiWhUqdNa9bwBV7LnlG8CwsCVPenFyOQTSRTOGHw/tjtME96zthh0Vv9Itf3i8w4CkUrdYaS6+dAt1m1YXQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <script src="fiveLetters.js"></script>
+</head>
+<body>
+    <div id="main-area">
+        <table id="gameboard">
+            <tbody>
+                <tr class="word-line">
+                    <td class="letter">.</td>
+                    <td class="letter">.</td>
+                    <td class="letter">.</td>
+                    <td class="letter">.</td>
+                    <td class="letter">.</td>
+                </tr>
+                <tr class="word-line">
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                </tr>
+                <tr class="word-line">
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                </tr>
+                <tr class="word-line">
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                </tr>
+                <tr class="word-line">
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                    <td class="letter"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="timer-holder">
+        <div class="timer"></div>
+    </div>
+    <div id="input-area">
+        Type your answers here...<br />
+        <input class="input" id="answer" onclick="userClickBox()" onkeypress="checkEnter()" maxlength="5" />
+        
+        <div id="buttons">
+            <button id="submit" class="page-button" onclick="userSubmit()">Submit</button>
+            <button id="give-up" class="page-button" onclick="giveUp()">Give up?</button>
+            <button id="restart" class="page-button" onclick="restart()">Restart</button>
+        </div>
+        <div id="warning-box"></div>
+        
+        <ul id="words-guessed">
+        </ul>
+    </div>
+</body>

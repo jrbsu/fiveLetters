@@ -1,0 +1,205 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+button.page-button {
+    height: 5vh;
+    min-height: 50px;
+    width: 10vw;
+    min-width: 100px;
+    font-size: 1em;
+}
+
+@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:1}}
+@keyframes fadeIn{0%{opacity:0}to{opacity:1}}
+@-webkit-keyframes pangram{0%{color:#ffacff}50%{color:#da9428}to{color:#ffacff}}
+@keyframes pangram{0%{color:#ffacff}50%{color:#da9428}to{color:#ffacff}}
+
+#main-area {
+    width: 100%;
+    background: #333;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#gameboard {
+    margin: auto;
+    width: 600px;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    text-transform: uppercase;
+}
+
+.letter {
+    width: 70px;
+    text-align: center;
+    border: 3px solid #55f;
+    height: 70px;
+    color: white;
+    font-weight: 900;
+    padding: 0.8vh 0;
+    background: #22c;
+    margin: 0 0.1em;
+    font-size: 30pt;
+    border-radius: 0.5rem;
+    -webkit-text-stroke: 1px black; /* width and color */
+}
+
+#input-area {
+    clear: both;
+    display: block;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
+}
+
+.correct {
+    color: #33aa33;
+    font-weight: 900;
+}
+
+.incorrect {
+    color: #999;
+    text-decoration: line-through;
+}
+
+#words-guessed {
+    padding: 1em 0 0 0;
+    list-style-type: none;
+}
+
+#warning-box {
+    padding: 1em;
+    display: none;
+    margin: 1em auto;
+    background: #ffb;
+    border: 3px solid #faa;
+    width: 50%;
+}
+
+.submission {
+    font-weight: 900;
+}
+.pangram {
+    font-weight: 900;
+    -webkit-animation: pangram 2s ease forwards infinite;
+    animation: pangram 2s ease forwards infinite;
+    background: pangram 2s ease forwards infinite;
+    color: aqua;
+}
+
+#overlay {
+    width: 80vw;
+    height: 80vh;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .15);
+    top: 10vh;
+    left: 10vh;
+    backdrop-filter: blur(15px);
+    z-index: 999;
+}
+
+#play {
+    top: 50%;
+    left: 30vw;
+    text-align: center;
+    font-size: 40pt;
+}
+
+input {
+    border: 3px solid #eee;
+    background: none;
+    font-size: 3em;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    width: 80%;
+}
+
+#buttons {
+    display: block;
+}
+
+#restart {
+    display: none;
+    background: pangram;
+}
+
+button#submit {
+    background: #acf;
+}
+
+button#give-up {
+    background: #fcc;
+}
+
+#points {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    background: #ff0;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    padding: 2.5em 0;
+}
+
+.green {
+    background-color: #2c2;
+}
+
+.yellow {
+    background-color: #cc2;
+}
+
+.red {
+    background-color: #c22;
+}
+
+#flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#overlay-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.timer {
+    float: left;
+    display: block;
+    background: #2c2;
+    width: 100vw;
+    height: 10px;
+}
+
+.timer-holder {
+    float: left;
+    display: block;
+    background: #000;
+    width: 100vw;
+    height: 10px;
+}
