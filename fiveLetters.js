@@ -19,8 +19,14 @@ var wordList = [],
 
 function animateSquares(element) {
     $(element)
-        .animate({'background-color':'#22CC22'},600)
-        .animate({'background-color':'#FF66B3'},600,function(){(animateSquares(element))}); 
+        .animate({
+            'background-color':'#22CC22',
+            boxShadow:'0 0 20px #00ff00'
+        }, 600)
+        .animate({
+            'background-color':'#FF66B3',
+            boxShadow:'0 0 20px #f0f'
+        }, 600, function(){(animateSquares(element))}); 
 }
 
 function timerSetup() {
@@ -82,7 +88,6 @@ function userClickBox() {
 }
 
 function userSubmit() {
-    timerSetup();
     guess += 1;
     hits = 0;
     wordChars = [];
@@ -105,6 +110,10 @@ function userSubmit() {
         wrong = true;
     }
     
+    if (fail === false) {
+        timerSetup();
+    }
+    
     // IF THERE ARE NO ERRORS...
     // This is the bulk of the code
     
@@ -119,7 +128,9 @@ function userSubmit() {
                 let j = i + 1;
                 let m = $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")");
                 animateSquares(m);
-                $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")").text(submissionChars[i]);
+                $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")")
+                    .text(submissionChars[i])
+                    .addClass("green");
             }
             for (var i=0;i<6;i++) {
                 if (i !== guess){
@@ -163,8 +174,14 @@ function userSubmit() {
             if (wrong === true && guess !== 5) {
                 $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")").text(submissionChars[i]);
                 $("tr.word-line:nth-child(" + guess2 + ") td.letter:nth-child(" + j + ")").text(chars[i]);
-                $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")").addClass("red");
+                $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")").addClass("black");
+                $("tr.word-line:nth-child(" + guess2 + ") td.letter:nth-child(" + j + ")").addClass("red");
                 $("#main-area").animate({'background-color':'#7A1515'},600);
+                for (var n=0;n<6;n++) {
+                    if (n !== guess2) {
+                        $("tr.word-line:nth-child(" + n + ")").animate({'opacity':'20%'},600);
+                    }
+                }
                 
             /*    for (var n=0;n<6;n++) {
                     if (n !== guess) {
@@ -238,8 +255,9 @@ function userSubmit() {
                 $("tr.word-line:nth-child(" + guess + ") td.letter:nth-child(" + j + ")").addClass("yellow");
             }
         }
-        
-    stopTimer();
+    if (fail === false) {    
+        stopTimer();
+    }
     }
     
     // other stuff
@@ -277,8 +295,13 @@ function restart() {
 function disableButtons() {
     let submitButton = document.querySelector('#submit');
     let giveupButton = document.querySelector('#give-up');
+    let inputBox = document.querySelector('#answer');
     submitButton.disabled = true;
     giveupButton.disabled = true;
+    inputBox.disabled = true;
 }
 
-document.onload = generateWordList();
+$(document).ready(function() {
+    generateWordList();
+    $('#answer').focus();
+});
