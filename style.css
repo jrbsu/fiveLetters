@@ -43,7 +43,7 @@ button.page-button {
 .letter {
     width: 70px;
     text-align: center;
-    border: 3px solid #55f;
+    border: 3px solid #006;
     height: 70px;
     color: white;
     font-weight: 900;
@@ -65,21 +65,6 @@ button.page-button {
     padding: 2em;
 }
 
-.correct {
-    color: #33aa33;
-    font-weight: 900;
-}
-
-.incorrect {
-    color: #999;
-    text-decoration: line-through;
-}
-
-#words-guessed {
-    padding: 1em 0 0 0;
-    list-style-type: none;
-}
-
 #warning-box {
     padding: 1em;
     display: none;
@@ -91,33 +76,6 @@ button.page-button {
 
 .submission {
     font-weight: 900;
-}
-.pangram {
-    font-weight: 900;
-    -webkit-animation: pangram 2s ease forwards infinite;
-    animation: pangram 2s ease forwards infinite;
-    background: pangram 2s ease forwards infinite;
-    color: aqua;
-}
-
-#overlay {
-    width: 80vw;
-    height: 80vh;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
-    border-radius: 5px;
-    text-align: center;
-    background-color: rgba(255, 255, 255, .15);
-    top: 10vh;
-    left: 10vh;
-    backdrop-filter: blur(15px);
-    z-index: 999;
-}
-
-#play {
-    top: 50%;
-    left: 30vw;
-    text-align: center;
-    font-size: 40pt;
 }
 
 input {
@@ -160,14 +118,25 @@ button#give-up {
 
 .green {
     background-color: #2c2;
+    border-color: #060;
+    box-shadow: 0 0 0.5em #0f0;
 }
 
 .yellow {
     background-color: #cc2;
+    border-color: #660;
+    box-shadow: 0 0 0.5em #ff0;
 }
 
 .red {
     background-color: #c22;
+    border-color: #900;
+    box-shadow: 0 0 0.5em #f00;
+}
+
+.black {
+    background-color: #222;
+    border-color: #000;
 }
 
 #flex {
@@ -202,4 +171,11 @@ button#give-up {
     background: #000;
     width: 100vw;
     height: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+    #gameboard {
+        margin: auto;
+        width: 100%;
+    }
 }
