@@ -178,4 +178,8 @@ button#give-up {
         margin: auto;
         width: 100%;
     }
+    
+    #main-area {
+        height: 40vh;
+    }
 }
