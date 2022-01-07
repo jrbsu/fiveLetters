@@ -14,11 +14,6 @@ button.page-button {
     font-size: 1em;
 }
 
-@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:1}}
-@keyframes fadeIn{0%{opacity:0}to{opacity:1}}
-@-webkit-keyframes pangram{0%{color:#ffacff}50%{color:#da9428}to{color:#ffacff}}
-@keyframes pangram{0%{color:#ffacff}50%{color:#da9428}to{color:#ffacff}}
-
 #main-area {
     width: 100%;
     background: #333;
@@ -178,8 +173,13 @@ button#give-up {
         margin: auto;
         width: 100%;
     }
-    
     #main-area {
         height: 40vh;
     }
+    .letter {
+        height: 40px;
+        width: 40px;
+        font-size: 20pt;
+    }
+}
 }
